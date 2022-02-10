@@ -85,7 +85,7 @@ data "template_cloudinit_config" "config" {
 
   part {
     # filename     = "wordpress.sh"
-    file = filename     = "wordpress.conf"
+    filename     = "wordpress.conf"
     content_type = "text/cloud-config"
     content      = data.template_file.script.rendered
   }
