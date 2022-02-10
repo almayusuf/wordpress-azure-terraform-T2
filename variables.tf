@@ -32,5 +32,5 @@ variable "database_admin_login" {
 }
 
 variable "database_admin_password" {
-  default = "w0rdpr3ss@p4ss"
+  default = "W0rdpr3ss@p4ss"
 }

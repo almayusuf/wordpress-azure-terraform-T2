@@ -1,7 +1,7 @@
 #!/bin/bash
 WORDPRESS_DB_HOST=wordpress-mysql-server.mysql.database.azure.com
 WORDPRESS_DB_USER=wordpress
-WORDPRESS_DB_PASSWORD=w0rdpr3ss@p4ss
+WORDPRESS_DB_PASSWORD=W0rdpr3ss@p4ss
 WORDPRESS_DB_NAME=wordpress
 
 
