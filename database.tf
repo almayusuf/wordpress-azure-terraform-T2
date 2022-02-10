@@ -1,7 +1,7 @@
 # Create MySQL Server
 resource "azurerm_mysql_server" "wordpress" {
   resource_group_name = azurerm_resource_group.wordpress.name
-  name                = "wordpress-mysql-server-123"
+  name                = "wordpress-mysql-server"
   location            = azurerm_resource_group.wordpress.location
   version             = "5.7"
 
