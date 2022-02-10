@@ -19,10 +19,12 @@ variable "application_port" {
 
 variable "admin_username" {
   description = "User name to use as the admin account on the VMs that will be part of the VM Scale Set"
+  default     = "wordpress"
 }
 
 variable "admin_password" {
   description = "Default password for admin account"
+  default     = "W0rdpr3ss@p4ss"
 }
 
 variable "database_admin_login" {

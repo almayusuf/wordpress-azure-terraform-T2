@@ -45,12 +45,12 @@ resource "azurerm_linux_virtual_machine_scale_set" "wordpress" {
   admin_password                  = var.admin_password
   disable_password_authentication = false
   # custom_data                     = filebase64("/home/ec2-user/wordpress-azure-terraform-T3/wordpress.sh")
-  custom_data                     = data.template_cloudinit_config.config.rendered
+  custom_data = "IyEvYmluL2Jhc2gKc3VkbyB5dW0gaW5zdGFsbCBodHRwZCB3Z2V0IHVuemlwIGVwZWwtcmVsZWFzZSBteXNxbCAteQpzdWRvIHl1bSAteSBpbnN0YWxsIGh0dHA6Ly9ycG1zLnJlbWlyZXBvLm5ldC9lbnRlcnByaXNlL3JlbWktcmVsZWFzZS03LnJwbQpzdWRvIHl1bSAteSBpbnN0YWxsIHl1bS11dGlscwpzdWRvIHl1bS1jb25maWctbWFuYWdlciAtLWVuYWJsZSByZW1pLXBocDU2ICAgW0luc3RhbGwgUEhQIDUuNl0Kc3VkbyB5dW0gLXkgaW5zdGFsbCBwaHAgcGhwLW1jcnlwdCBwaHAtY2xpIHBocC1nZCBwaHAtY3VybCBwaHAtbXlzcWwgcGhwLWxkYXAgcGhwLXppcCBwaHAtZmlsZWluZm8Kc3VkbyB3Z2V0IGh0dHBzOi8vd29yZHByZXNzLm9yZy9sYXRlc3QudGFyLmd6CnN1ZG8gdGFyIC14ZiBsYXRlc3QudGFyLmd6IC1DIC92YXIvd3d3L2h0bWwvCnN1ZG8gbXYgL3Zhci93d3cvaHRtbC93b3JkcHJlc3MvKiAvdmFyL3d3dy9odG1sLwpzdWRvIGdldGVuZm9yY2UKc3VkbyBzZWQgJ3MvU0VMSU5VWD1wZXJtaXNzaXZlL1NFTElOVVg9ZW5mb3JjaW5nL2cnIC9ldGMvc3lzY29uZmlnL3NlbGludXggLWkKc3VkbyBzZXRlbmZvcmNlIDAKc3VkbyBjaG93biAtUiBhcGFjaGU6YXBhY2hlIC92YXIvd3d3L2h0bWwvCnN1ZG8gc3lzdGVtY3RsIHN0YXJ0IGh0dHBkCnN1ZG8gc3lzdGVtY3RsIGVuYWJsZSBodHRwZA=="
 
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
+ source_image_reference {
+    publisher = "OpenLogic"
+    offer     = "CentOS"
+    sku       = "7_9-gen2"
     version   = "latest"
   }
 
@@ -74,21 +74,21 @@ resource "azurerm_linux_virtual_machine_scale_set" "wordpress" {
   tags = var.tags
 }
 
-data "template_file" "script" {
-  # template = filebase64("/home/ec2-user/wordpress-azure-terraform-T3/wordpress.sh")
-  template = file("wordpress.conf")
-}
+# data "template_file" "script" {
+#   # template = filebase64("/home/ec2-user/wordpress-azure-terraform-T3/wordpress.sh")
+#   template = file("wordpress.conf")
+# }
 
-data "template_cloudinit_config" "config" {
-  gzip          = true
-  base64_encode = true
+# data "template_cloudinit_config" "config" {
+#   gzip          = true
+#   base64_encode = true
 
-  part {
-    # filename     = "wordpress.sh"
-    filename     = "wordpress.conf"
-    content_type = "text/cloud-config"
-    content      = data.template_file.script.rendered
-  }
+#   part {
+#     # filename     = "wordpress.sh"
+#     filename     = "wordpress.conf"
+#     content_type = "text/cloud-config"
+#     content      = data.template_file.script.rendered
+#   }
 
-  depends_on = [azurerm_mysql_server.wordpress]
-}
+#   depends_on = [azurerm_mysql_server.wordpress]
+# }

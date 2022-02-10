@@ -1,15 +1,15 @@
 # Create MySQL Server
 resource "azurerm_mysql_server" "wordpress" {
   resource_group_name = azurerm_resource_group.wordpress.name
-  name                = "wordpress-mysql-server"
+  name                = "wordpress-mysql-server-${(random_string.fqdn.result)}"
   location            = azurerm_resource_group.wordpress.location
   version             = "5.7"
 
   administrator_login          = var.database_admin_login
   administrator_login_password = var.database_admin_password
 
-  sku_name                     = "B_Gen5_2"
-  storage_mb                   = "5120"
+  sku_name                     = "GP_Gen5_4"
+  storage_mb                   = "102400"
   auto_grow_enabled            = false
   backup_retention_days        = 7
   geo_redundant_backup_enabled = false
@@ -22,7 +22,7 @@ resource "azurerm_mysql_server" "wordpress" {
 
 # Create MySql DataBase
 resource "azurerm_mysql_database" "wordpress" {
-  name                = "wordpress-mysql-db"
+  name                = "wordpress-mysql-db-${(random_string.fqdn.result)}"
   resource_group_name = azurerm_resource_group.wordpress.name
   server_name         = azurerm_mysql_server.wordpress.name
   charset             = "utf8"
@@ -31,7 +31,7 @@ resource "azurerm_mysql_database" "wordpress" {
 
 # Config MySQL Server Firewall Rule
 resource "azurerm_mysql_firewall_rule" "wordpress" {
-  name                = "wordpress-mysql-firewall-rule"
+  name                = "wordpress-mysql-firewall-rule-${(random_string.fqdn.result)}"
   resource_group_name = azurerm_resource_group.wordpress.name
   server_name         = azurerm_mysql_server.wordpress.name
   start_ip_address    = azurerm_public_ip.wordpress.ip_address
