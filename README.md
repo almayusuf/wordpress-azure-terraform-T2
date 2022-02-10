@@ -1,4 +1,4 @@
-# wordpress-azure-terraform-T3
+# wordpress-azure-terraform-T2
 Use Terraform to provision an Azure virtual machine scale set running Wordpress.
 
 
