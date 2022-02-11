@@ -1,10 +1,4 @@
 #!/bin/bash
-export WORDPRESS_DB_HOST=wordpress-mysql-server.mysql.database.azure.com
-export WORDPRESS_DB_USER=wordpress
-export WORDPRESS_DB_PASSWORD=W0rdpr3ss@p4ss
-export WORDPRESS_DB_NAME=wordpress
-
-
 sudo yum install httpd wget unzip epel-release mysql -y
 sudo yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 sudo yum -y install yum-utils
@@ -20,5 +14,8 @@ sudo chown -R apache:apache /var/www/html/
 sudo systemctl start httpd
 sudo systemctl enable httpd
 
-# Wordpress Password Hash Generator
-# https://www.useotools.com/wordpress-password-hash-generator/output
+
+export WORDPRESS_DB_HOST=mysqlserver-ejmmqn.mysql.database.azure.com
+export WORDPRESS_DB_USER=wordpress
+export WORDPRESS_DB_PASSWORD=W0rdpr3ss@p4ss
+export WORDPRESS_DB_NAME=wordpress
