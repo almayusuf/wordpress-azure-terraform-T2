@@ -17,5 +17,5 @@ sudo systemctl enable httpd
 
 export WORDPRESS_DB_HOST=mysqlserver-ejmmqn.mysql.database.azure.com
 export WORDPRESS_DB_USER=wordpress
-export WORDPRESS_DB_PASSWORD=W0rdpr3ss@p4ss
+export WORDPRESS_DB_PASSWORD=@p4ssW0rdpr3ss
 export WORDPRESS_DB_NAME=wordpress
